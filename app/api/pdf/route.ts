@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import chromium from "@sparticuz/chromium";
-import { chromium as pwChromium } from "playwright-core";
 
 export const runtime = "nodejs";          // ★必須（Edgeだと落ちます）
 export const dynamic = "force-dynamic";   // ★PDFは動的生成なので
@@ -15,13 +13,17 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "projectId required" }, { status: 400 });
     }
 
+    // 動的インポートでVercel環境でのみロード
+    const chromium = (await import("@sparticuz/chromium")).default;
+    const { chromium: pwChromium } = await import("playwright-core");
+
     // ★ Vercel/Lambda向けのChromium設定
     const executablePath = await chromium.executablePath();
 
     const browser = await pwChromium.launch({
       args: chromium.args,
       executablePath,
-      headless: chromium.headless,
+      headless: true,
     });
 
     const page = await browser.newPage({
@@ -49,7 +51,7 @@ export async function GET(req: Request) {
     await page.close();
     await browser.close();
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
