@@ -47,8 +47,18 @@ export type ProjectDataP01 = {
 // ----------------------------
 export type ProjectDataP02 = {
   pageNoText: "P02";
-  conceptHeading?: string; // 既存対応
-  conceptBody?: string;    // 既存対応
+  conceptHeading?: string;     // 既存対応
+  conceptBody?: string;        // 既存対応
+  projectTitleLines: string[]; // Concept01Page用
+  projectSubtitle: string;     // Concept01Page用
+  stampText: string;          // Concept01Page用
+  brandElements: Array<{      // Concept01Page用
+    key: string;
+    no: number;
+    title: string;
+    bullets: string[];
+    pill: string;
+  }>;
 };
 
 // ----------------------------
@@ -58,12 +68,16 @@ export type ProjectDataP03 = {
   pageNoText: "P03";
   paragraphTop?: string;     // 既存対応
   paragraphBottom?: string;  // 既存対応
-  elements?: Array<{         // 既存対応
+  sectionJp: string;        // Concept02Page用
+  sectionEn: string;        // Concept02Page用
+  elements: Array<{         // Concept02Page用
     key: string;
     no: number;
     title: string;
     bullets: string[];
     pill: string;
+    copy?: string;
+    images?: string[];
   }>;
 };
 
@@ -228,25 +242,53 @@ export type CoverContentData = {
   };
 };
 
-// ProjectDataP01 → CoverContentData変換
+// ProjectData → CoverContentData変換（オーバーロード対応）
+export function convertToLegacyCoverData(
+  data: ProjectData
+): CoverContentData;
 export function convertToLegacyCoverData(
   common: ProjectCommon,
   p01: ProjectDataP01
+): CoverContentData;
+export function convertToLegacyCoverData(
+  dataOrCommon: ProjectData | ProjectCommon,
+  p01?: ProjectDataP01
 ): CoverContentData {
-  return {
-    clientName: common.clientName,
-    dateText: common.dateText,
-    docTitleRight: common.docTitleRight,
-    pageNoText: p01.pageNoText,
-    coverImages: {
-      image1: p01.coverImages.cover01,
-      image2: p01.coverImages.cover02,
-      image3: p01.coverImages.cover03,
-      image4: p01.coverImages.cover04,
-      image5: p01.coverImages.cover05,
-      image6: p01.coverImages.cover06,
-    }
-  };
+  if (p01) {
+    // 2引数の場合
+    const common = dataOrCommon as ProjectCommon;
+    return {
+      clientName: common.clientName,
+      dateText: common.dateText,
+      docTitleRight: common.docTitleRight,
+      pageNoText: p01.pageNoText,
+      coverImages: {
+        image1: p01.coverImages.cover01,
+        image2: p01.coverImages.cover02,
+        image3: p01.coverImages.cover03,
+        image4: p01.coverImages.cover04,
+        image5: p01.coverImages.cover05,
+        image6: p01.coverImages.cover06,
+      }
+    };
+  } else {
+    // 1引数の場合
+    const data = dataOrCommon as ProjectData;
+    return {
+      clientName: data.common.clientName,
+      dateText: data.common.dateText,
+      docTitleRight: data.common.docTitleRight,
+      pageNoText: data.p01.pageNoText,
+      coverImages: {
+        image1: data.p01.coverImages.cover01,
+        image2: data.p01.coverImages.cover02,
+        image3: data.p01.coverImages.cover03,
+        image4: data.p01.coverImages.cover04,
+        image5: data.p01.coverImages.cover05,
+        image6: data.p01.coverImages.cover06,
+      }
+    };
+  }
 }
 
 // デフォルトProjectData生成
@@ -276,12 +318,43 @@ export function createDefaultProjectData(): ProjectData {
       pageNoText: "P02",
       conceptHeading: "Logo Design / VISUAL CONCEPT-01",
       conceptBody: "本文サンプル...",
+      projectTitleLines: ["豊泉工務店", "ロゴデザインのご提案"],
+      projectSubtitle: "HOFU style",
+      stampText: "初稿",
+      brandElements: [
+        {
+          key: "element1",
+          no: 1,
+          title: "信頼性",
+          bullets: ["長年の実績", "地域密着", "品質重視"],
+          pill: "TRUST"
+        },
+        {
+          key: "element2",
+          no: 2,
+          title: "革新性",
+          bullets: ["最新技術", "デザイン性", "機能性"],
+          pill: "INNOVATION"
+        }
+      ]
     },
     p03: {
       pageNoText: "P03",
       paragraphTop: "コミュニティー事業「HOFU Style」を名称とした...",
       paragraphBottom: "以下の5つのエレメントからブランド構築し...",
-      elements: [],
+      sectionJp: "ロゴデザインの方向性",
+      sectionEn: "NEW VISUAL ELEMENT",
+      elements: [
+        {
+          key: "direction1",
+          no: 1,
+          title: "モダンでシンプル",
+          bullets: ["洗練されたデザイン", "分かりやすい形状"],
+          pill: "MODERN",
+          copy: "現代的で親しみやすいデザイン",
+          images: ["/images/concept_01.jpg", "/images/concept_02.jpg"]
+        }
+      ],
     },
     p04: {
       pageNoText: "P04",
@@ -337,5 +410,55 @@ export function createDefaultProjectData(): ProjectData {
         sign03: "/images/sign_03.jpg",
       },
     },
+  };
+}
+
+// 統合ProjectData → 各コンポーネント用データ変換関数
+
+// Concept01Page用（P02）の変換
+export function convertToConcept01Data(data: ProjectData): any {
+  return {
+    clientName: data.common.clientName,
+    dateText: data.common.dateText,
+    docTitleRight: data.common.docTitleRight,
+    projectTitleLines: data.p02.projectTitleLines,
+    projectSubtitle: data.p02.projectSubtitle,
+    stampText: data.p02.stampText,
+    pageNoText: data.p02.pageNoText,
+    brandElements: data.p02.brandElements,
+  };
+}
+
+// Concept02Page用（P03）の変換
+export function convertToConcept02Data(data: ProjectData): any {
+  return {
+    clientName: data.common.clientName,
+    dateText: data.common.dateText,
+    docTitleRight: data.common.docTitleRight,
+    sectionJp: data.p03.sectionJp,
+    sectionEn: data.p03.sectionEn,
+    elements: data.p03.elements,
+  };
+}
+
+// Concept03Page用（P04）の変換
+export function convertToConcept03Data(data: ProjectData): any {
+  return {
+    clientName: data.common.clientName,
+    dateText: data.common.dateText,
+    docTitleRight: data.common.docTitleRight,
+    pageNoText: data.p04.pageNoText,
+    selectedElement: data.p04.selectedElement,
+  };
+}
+
+// Concept04Page用（P05）の変換
+export function convertToConcept04Data(data: ProjectData): any {
+  return {
+    clientName: data.common.clientName,
+    dateText: data.common.dateText,
+    docTitleRight: data.common.docTitleRight,
+    pageNoText: data.p05.pageNoText,
+    selectedElement: data.p05.selectedElement,
   };
 }

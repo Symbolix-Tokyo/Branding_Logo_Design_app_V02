@@ -32,7 +32,7 @@ export async function GET(req: Request) {
 
   await browser.close();
 
-  return new NextResponse(pdf, {
+  return new NextResponse(new Uint8Array(pdf), {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename=proposal_${projectId}.pdf`

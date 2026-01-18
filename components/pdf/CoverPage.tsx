@@ -17,6 +17,24 @@ export type ProjectDataCover = {
   ];
 
   pageNoText: string;
+} | {
+  clientName: string;
+  dateText: string;
+  docTitleRight: string;
+
+  coverTitle?: string;
+  coverSubTitle?: string;
+
+  coverImages: {
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
+    image5: string;
+    image6: string;
+  };
+
+  pageNoText: string;
 };
 
 export default function CoverPage({
@@ -110,16 +128,34 @@ export default function CoverPage({
           height: "120mm",
         }}
       >
-        {data.conceptImages.map((src, i) => {
-          const col = i % GRID.cols;
-          const row = Math.floor(i / GRID.cols);
+        {(() => {
+          // データ形式を統一的に処理
+          let images: string[];
+          if ('conceptImages' in data) {
+            images = data.conceptImages;
+          } else if ('coverImages' in data) {
+            images = [
+              data.coverImages.image1,
+              data.coverImages.image2,
+              data.coverImages.image3,
+              data.coverImages.image4,
+              data.coverImages.image5,
+              data.coverImages.image6,
+            ];
+          } else {
+            images = [];
+          }
 
-          const left = col * (cellW + GRID.gap);
-          const top = row * (cellH + GRID.gap);
+          return images.map((src, i) => {
+            const col = i % GRID.cols;
+            const row = Math.floor(i / GRID.cols);
 
-          return (
-            <div
-              key={src + i}
+            const left = col * (cellW + GRID.gap);
+            const top = row * (cellH + GRID.gap);
+
+            return (
+              <div
+                key={src + i}
               style={{
                 position: "absolute",
                 left: `${left}mm`,
@@ -144,7 +180,8 @@ export default function CoverPage({
               />
             </div>
           );
-        })}
+        });
+        })()}
       </div>
 
       {/* ✅ 共通フッター */}
