@@ -1,0 +1,19 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/test-watermark/page": "app/test-watermark/page.js",
+  "/api/project/route": "app/api/project/route.js",
+  "/api/pdf/route": "app/api/pdf/route.js",
+  "/print/sample-p01/page": "app/print/sample-p01/page.js",
+  "/print/[projectId]/page": "app/print/[projectId]/page.js",
+  "/print/sample-p03/page": "app/print/sample-p03/page.js",
+  "/print/sample-p07/page": "app/print/sample-p07/page.js",
+  "/print/sample-p04/page": "app/print/sample-p04/page.js",
+  "/print/sample-p06/page": "app/print/sample-p06/page.js",
+  "/print/sample-p10/page": "app/print/sample-p10/page.js",
+  "/print/page": "app/print/page.js",
+  "/print/sample-p02/page": "app/print/sample-p02/page.js",
+  "/print/sample-p05/page": "app/print/sample-p05/page.js",
+  "/print/sample-p08/page": "app/print/sample-p08/page.js",
+  "/print/sample-p09/page": "app/print/sample-p09/page.js"
+}
