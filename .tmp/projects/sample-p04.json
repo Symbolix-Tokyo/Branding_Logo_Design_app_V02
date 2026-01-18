@@ -1,0 +1,84 @@
+{
+  "clientName": "豊泉工務店",
+  "dateText": "2026.01.14",
+  "docTitleRight": "ロゴデザインおよびイメージのご提案",
+
+  "projectTitleLines": ["HOFU style", "ブランドロゴデザイン", "のご提案"],
+  "projectSubtitle": "豊泉工務店さまの新しいコミュニティ事業\n自社の強みを最大限に活かすデザイン!!",
+  "stampText": "初稿",
+  "coverImages": [
+    { "role": "hero_main", "src": "/assets/cover/hero_main.jpg" },
+    { "role": "hero_secondary", "src": "/assets/cover/hero_secondary.jpg" },
+    { "role": "work_process", "src": "/assets/cover/work_process.jpg" },
+    { "role": "people_scene", "src": "/assets/cover/people_scene.jpg" },
+    { "role": "place_space", "src": "/assets/cover/place_space.jpg" },
+    { "role": "detail_texture", "src": "/assets/cover/detail_texture.jpg" }
+  ],
+
+  "conceptNoText": "03",
+  "sectionJp": "ロゴデザインのコンセプト",
+  "sectionEn": "NEW DESIGN CONCEPT",
+
+  "columns": [
+    {
+      "key": "connection",
+      "no": 1,
+      "title": "次世代との繋がり",
+      "keywordEn": "Style",
+      "keywordJp": "繋がり・ふれあい",
+      "images": [
+        "/images/materialize-01-01.png",
+        "/images/materialize-01-02.png"
+      ],
+      "description": "STYLEを例に繋がり、ふれあいを表現。それぞれの要素（エレメント）の重なりが企業の価値観を表現します。"
+    },
+    {
+      "key": "hofu",
+      "no": 2,
+      "title": "豊泉工務店",
+      "keywordEn": "HOFU",
+      "keywordJp": "快適・ご縁",
+      "images": [
+        "/images/materialize-02-01.png",
+        "/images/materialize-02-02.png"
+      ],
+      "description": "コーポレートカラーを受け継ぎ、柔らかな曲線で快適な居住空間の集合に対して、結び繋がるご縁を表現します。"
+    },
+    {
+      "key": "idea",
+      "no": 3,
+      "title": "柔軟で豊富",
+      "keywordEn": "Idea",
+      "keywordJp": "女性の良さ・豊富",
+      "images": [
+        "/images/materialize-03-01.png",
+        "/images/materialize-03-02.png"
+      ],
+      "description": "S親しみやすい印象で、自由な発想や豊富な経験でお客さまに満足していただきたい。家づくりを楽しんでいただきたい想いを表現。"
+    },
+    {
+      "key": "passion",
+      "no": 4,
+      "title": "情熱",
+      "keywordEn": "Passion",
+      "keywordJp": "情熱・進化",
+      "images": [
+        "/images/materialize-04-01.png",
+        "/images/materialize-04-02.png"
+      ],
+      "description": "地域の方々へ情熱あふれるメッセージと、進化する暮らしの美学とインスピレーションを表現。"
+    },
+    {
+      "key": "natural",
+      "no": 5,
+      "title": "ナチュラル",
+      "keywordEn": "Natural",
+      "keywordJp": "自然・調和",
+      "images": [
+        "/images/materialize-05-01.png",
+        "/images/materialize-05-02.png"
+      ],
+      "description": "「家づくり」と「自然」をシンプルにビジュアル化していく。\n広い世代にもインパクトあるナチュラルスタイルを象徴していく。"
+    }
+  ]
+}

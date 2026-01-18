@@ -1,0 +1,61 @@
+{
+  "clientName": "豊泉工務店",
+  "dateText": "2026.01.14",
+  "docTitleRight": "ロゴデザインおよびイメージのご提案",
+
+  "projectTitleLines": [
+    "SAMPLE COMPANY",
+    "NEW LOGO",
+    "DESIGN PROPOSAL"
+  ],
+  "projectSubtitle": "ブランディング・ロゴデザイン提案書",
+  "stampText": "Ver. 1.0",
+  "coverImages": [
+    { "role": "01", "src": "/images/materialize_01-02.png" },
+    { "role": "02", "src": "/images/materialize_02-02.png" },
+    { "role": "03", "src": "/images/materialize_03-02.png" }
+  ],
+
+  "conceptNoText": "05",
+  "sectionJp": "ロゴデザイン",
+  "sectionEn": "NEW LOGO VISUAL",
+
+  "items": [
+    {
+      "key": "f1",
+      "no": 1,
+      "label": "Finish type 1",
+      "image": "/images/finish_01.png"
+    },
+    {
+      "key": "f2",
+      "no": 2,
+      "label": "Finish type 2", 
+      "image": "/images/finish_02.png"
+    },
+    {
+      "key": "f3",
+      "no": 3,
+      "label": "Finish type 3",
+      "image": "/images/finish_03.png"
+    },
+    {
+      "key": "f4",
+      "no": 4,
+      "label": "Finish type 4",
+      "image": "/images/finish_04.png"
+    },
+    {
+      "key": "f5",
+      "no": 5,
+      "label": "Finish type 5",
+      "image": "/images/finish_05.png"
+    },
+    {
+      "key": "f6",
+      "no": 6,
+      "label": "Finish type 6",
+      "image": "/images/finish_06.png"
+    }
+  ]
+}

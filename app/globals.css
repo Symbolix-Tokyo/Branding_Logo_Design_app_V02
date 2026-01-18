@@ -1,0 +1,11 @@
+.page {
+  width: 297mm;
+  height: 210mm;
+  position: relative;
+  overflow: hidden;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}

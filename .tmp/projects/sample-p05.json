@@ -1,0 +1,49 @@
+{
+  "clientName": "豊泉工務店",
+  "dateText": "2026.01.14",
+  "docTitleRight": "ロゴデザインおよびイメージのご提案",
+
+  "projectTitleLines": ["HOFU style", "ブランドロゴデザイン", "のご提案"],
+  "projectSubtitle": "豊泉工務店さまの新しいコミュニティ事業\n自社の強みを最大限に活かすデザイン!!",
+  "stampText": "初稿",
+  "coverImages": [
+    { "role": "hero_main", "src": "/assets/cover/hero_main.jpg" },
+    { "role": "hero_secondary", "src": "/assets/cover/hero_secondary.jpg" },
+    { "role": "work_process", "src": "/assets/cover/work_process.jpg" },
+    { "role": "people_scene", "src": "/assets/cover/people_scene.jpg" },
+    { "role": "place_space", "src": "/assets/cover/place_space.jpg" },
+    { "role": "detail_texture", "src": "/assets/cover/detail_texture.jpg" }
+  ],
+
+  "conceptNoText": "04",
+  "sectionJp": "ロゴデザイン",
+  "sectionEn": "NEW LOGO VISUAL",
+
+  "newLogoDesignPng": "/images/New_logo_design_P03.png",
+
+  "topImages": [
+    { "no": 1, "image": "/images/materialize-01-02.png" },
+    { "no": 2, "image": "/images/materialize-02-02.png" },
+    { "no": 3, "image": "/images/materialize-03-02.png" },
+    { "no": 4, "image": "/images/materialize-04-02.png" },
+    { "no": 5, "image": "/images/materialize-05-02.png" }
+  ],
+
+  "processes": [
+    {
+      "title": "The Logo Design Process 1",
+      "boxNote": "/images/design_process_01.png",
+      "description": "コンセプト設計段階では、お客様のビジョンと価値観を深く理解し、ブランドの核となるメッセージを明確化します。市場分析とターゲット顧客の洞察を通じて、独自性のあるデザイン方向性を確立します。"
+    },
+    {
+      "title": "The Logo Design Process 2",
+      "boxNote": "/images/design_process_02.png",
+      "description": "ビジュアル開発段階では、確立されたコンセプトを具体的なデザイン要素に変換します。色彩、形状、タイポグラフィのバランスを検討し、複数のデザインバリエーションを作成して最適解を追求します。"
+    },
+    {
+      "title": "The Logo Design Process 3",
+      "boxNote": "/images/design_process_03.png",
+      "description": "最終実装段階では、選定されたデザインの詳細調整を行い、様々な媒体での適用性を検証します。ブランドガイドラインの策定とともに、一貫性のあるブランド体験を実現します。"
+    }
+  ]
+}

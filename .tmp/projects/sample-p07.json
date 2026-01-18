@@ -1,0 +1,20 @@
+{
+  "clientName": "豊泉工務店",
+  "dateText": "2026.01.15",
+  "docTitleRight": "ロゴデザインおよびイメージのご提案",
+
+  "sectionJp": "名刺デザイン",
+  "sectionEn": "NEW LOGO VISUAL",
+  "designLabel": "VISUAL DESIGN-01",
+
+  "personName": "豊泉 太郎",
+  "personNameRoman": "TOYOIZUMI TARO",
+
+  "logoImage": "/images/finish_01.png",
+  "mockupImage": "/images/meishi_mockup.png",
+
+  "colorPrimary": "#556B2F",
+  "colorSecondary": "#7A4B2A",
+
+  "pageNoText": "P07"
+}
