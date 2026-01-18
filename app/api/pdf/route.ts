@@ -10,7 +10,9 @@ export async function GET(req: Request) {
 
   if (!projectId) return new NextResponse("projectId required", { status: 400 });
 
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   const page = await browser.newPage({
     viewport: { width: 1400, height: 900 } // 印刷自体はA4指定なので任意
   });
