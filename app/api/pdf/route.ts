@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 
-export const runtime = "nodejs";          // ★必須（Edgeだと落ちます）
-export const dynamic = "force-dynamic";   // ★PDFは動的生成なので
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
@@ -13,30 +15,22 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "projectId required" }, { status: 400 });
     }
 
-    // 動的インポートでVercel環境でのみロード
-    const chromium = (await import("@sparticuz/chromium")).default;
-    const { chromium: pwChromium } = await import("playwright-core");
-
-    // ★ Vercel/Lambda向けのChromium設定
     const executablePath = await chromium.executablePath();
 
-    const browser = await pwChromium.launch({
+    const browser = await puppeteer.launch({
       args: chromium.args,
       executablePath,
       headless: true,
     });
 
-    const page = await browser.newPage({
-      viewport: { width: 1400, height: 900 }
-    });
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1400, height: 900 });
 
-    // 本番環境ではVercelのURLを使用
-    const baseUrl = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}` 
-      : "http://localhost:3000";
+    // ★ env不要：このリクエスト自身の origin を使う
+    const baseUrl = url.origin;
     const targetUrl = `${baseUrl}/print/${projectId}?watermark=${watermark ? "1" : "0"}`;
 
-    await page.goto(targetUrl, { waitUntil: "networkidle" });
+    await page.goto(targetUrl, { waitUntil: "networkidle0" });
 
     // Printページの分割レンダリング完了待ち
     await page.waitForFunction(() => (window as any).__PRINT_READY__ === true);
@@ -45,7 +39,7 @@ export async function GET(req: Request) {
       format: "A4",
       landscape: true,
       printBackground: true,
-      margin: { top: "0mm", right: "0mm", bottom: "0mm", left: "0mm" }
+      margin: { top: "0mm", right: "0mm", bottom: "0mm", left: "0mm" },
     });
 
     await page.close();
